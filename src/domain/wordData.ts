@@ -1,9 +1,15 @@
-export type Phonetic = {
+export type Word = string;
+
+export type Phonetic = string;
+
+export type Phonetics = {
   text: string;
   audio: string;
-}
+}[]
 
-export type PartOfSpeech = "noun" | "verb" | "intransitive verb" | "adjective" | "exlamation" | "prefix" | "suffix" | "combining form";
+export type Origin = string;
+
+export type PartOfSpeech = string;
 
 export type Definition = {
   definition: string;
@@ -17,10 +23,10 @@ export type Meaning = {
   definitions: Definition[]
 }
 
-export type Word = {
-  word: string;
-  phonetic: string;
-  phonetics: Phonetic[];
-  origin: string;
+export type WordData = {
+  word: Word;
+  phonetic: Phonetic;
+  phonetics: Phonetics;
+  origin: Origin;
   meanings: Meaning[];
 }

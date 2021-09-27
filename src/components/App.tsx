@@ -1,11 +1,8 @@
 import React, { FC } from 'react';
+import WordPage from './pages/WordPage';
 
 const App: FC = () => {
-  return (
-    <div className="App">
-      <span>App content</span>
-    </div>
-  );
+  return <WordPage />
 }
 
 export default App;
