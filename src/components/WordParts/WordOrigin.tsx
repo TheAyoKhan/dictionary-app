@@ -6,7 +6,7 @@ type WordOriginTypes = {
 }
 
 const WordOrigin: FC<WordOriginTypes> = ({origin}) => {
-  return <div>{origin}</div>
+  return <div className="word__origin">{origin}</div>
 }
 
 export default WordOrigin;

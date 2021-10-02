@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const StyledWordText = styled.div`
-  .word-text {
+  .word__text {
     font-size: 1.5rem;
   }
 `;
@@ -15,7 +15,7 @@ type WordTextTypes = {
 const WordText: FC<WordTextTypes> = ({ word }) => {
   return (
     <StyledWordText>
-      <span className="word-text">{word}</span>
+      <span className="word__text">{word}</span>
     </StyledWordText>
   );
 }
