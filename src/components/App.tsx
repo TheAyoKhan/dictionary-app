@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import WordPage from './pages/WordPage';
+import WordPage from './pages/DictionaryEntryPage';
 import Header from './Header';
 import SettingsModal from './SettingsModal';
 
