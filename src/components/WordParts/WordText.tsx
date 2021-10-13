@@ -1,4 +1,4 @@
-import { Word } from '../../domain/wordData';
+import { Word } from '../../app/domain/wordData';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 

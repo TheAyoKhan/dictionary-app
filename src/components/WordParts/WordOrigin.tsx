@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Origin } from '../../domain/wordData'
+import { Origin } from '../../app/domain/wordData'
 
 type WordOriginTypes = {
   origin: Origin

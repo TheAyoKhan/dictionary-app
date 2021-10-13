@@ -1,6 +1,6 @@
 import React, { FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
-import { Phonetic, Phonetics } from '../../domain/wordData';
+import { Phonetic, Phonetics } from '../../app/domain/wordData';
 
 type CardPhoneticTypes = {
   phonetic: Phonetic;

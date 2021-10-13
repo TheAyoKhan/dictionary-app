@@ -1,15 +1,14 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import SectionTitle from '../../../SectionTitle';
 
 type WordAntonymTypes = {
   antonyms: string[];
 };
 
 const StyledWordAntonym = styled.div`
-  &.word__antonyms {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 const WordAntonym: FC<WordAntonymTypes> = ({ antonyms }) => {
@@ -17,7 +16,7 @@ const WordAntonym: FC<WordAntonymTypes> = ({ antonyms }) => {
 
   return (
     <StyledWordAntonym className="word__antonym">
-      <span className="antonym__title section-title">Antonyms</span>
+      <SectionTitle className="antonyms-title">Antonyms</SectionTitle>
       {antonymEls}
     </StyledWordAntonym>
   )

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import SectionTitle from "../../../SectionTitle";
 
 type WordSynonymTypes = {
   synonyms: string[];
@@ -17,7 +18,7 @@ const WordSynonym: FC<WordSynonymTypes> = ({ synonyms }) => {
 
   return (
     <StyledWordSynonym className="word__synonyms">
-      <span className="synonym__title section-title">Synonyms</span>
+      <SectionTitle className="synonyms-title">Synonyms</SectionTitle>
       {synonymEls}
     </StyledWordSynonym>
   )

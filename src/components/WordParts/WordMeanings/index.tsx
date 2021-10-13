@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import WordMeaning from './WordMeaning';
-import { Meaning } from '../../../domain/wordData';
+import { Meaning } from '../../../app/domain/wordData';
 
 type WordMeaningsTypes = {
   meanings: Meaning[];

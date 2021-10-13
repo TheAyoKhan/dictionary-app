@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Definition } from '../../../../domain/wordData';
+import { Definition } from '../../../../app/domain/wordData';
 import WordAntonyms from './WordAntonym';
 import WordSynonyms from './WordSynonym';
 
@@ -9,13 +9,15 @@ type WordDefinitionTypes = {
 }
 
 const StyledWordDefinition = styled.div`
-  &.word__definition-container  {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 8px;
+
+  background-color: #ddd;
 
   .word__example {
     font-style: italic;
@@ -28,7 +30,7 @@ const WordDefinitionContainer: FC<WordDefinitionTypes> = ({ definitionObj: defin
   return (
     <StyledWordDefinition className="word__definition-container">
       <span className="word__definition">{definition}</span>
-      <span className="word__example">“{example}”</span>
+      { example && <span className="word__example">“{example}”</span> }
       { synonyms.length > 0 && <WordSynonyms {...{ synonyms }}/> }
       { antonyms.length > 0 && <WordAntonyms {...{ antonyms }}/> }
     </StyledWordDefinition>
