@@ -1,5 +1,5 @@
 import { Word } from '../../app/domain/wordData';
-import React, { FC } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledWordText = styled.div`
@@ -8,11 +8,11 @@ const StyledWordText = styled.div`
   }
 `;
 
-type WordTextTypes = {
+type WordTextProps = {
   word: Word;
 }
 
-const WordText: FC<WordTextTypes> = ({ word }) => {
+const WordText = ({ word }: WordTextProps): JSX.Element => {
   return (
     <StyledWordText>
       <span className="word__text">{word}</span>

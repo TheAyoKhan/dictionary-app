@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-const Loading: FC = () => {
+const Loading = (): JSX.Element => {
   return <div className="loading">Loading...</div>
 }
 

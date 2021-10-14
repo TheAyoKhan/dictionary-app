@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import WordDefinition from "./WordDefinition";
 import { Meaning } from "../../../app/domain/wordData";
 
-type WordMeaningTypes = {
+type WordMeaningProps = {
   meaning: Meaning;
 };
 
@@ -19,7 +19,7 @@ const StyledWordMeaning = styled.div`
   }
 `;
 
-const WordMeaning: FC<WordMeaningTypes> = ({ meaning }) => {
+const WordMeaning = ({ meaning }: WordMeaningProps): JSX.Element => {
   const { partOfSpeech, definitions } = meaning;
   const definitionEls = definitions.map((definitionObj, i) => {
     return <WordDefinition {...{ definitionObj }} key={i}/>

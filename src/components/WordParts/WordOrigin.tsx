@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Origin } from '../../app/domain/wordData'
 
-type WordOriginTypes = {
+type WordOriginProps = {
   origin: Origin
 }
 
-const WordOrigin: FC<WordOriginTypes> = ({origin}) => {
+const WordOrigin = ({origin}: WordOriginProps): JSX.Element => {
   return <div className="word__origin">{origin}</div>
 }
 

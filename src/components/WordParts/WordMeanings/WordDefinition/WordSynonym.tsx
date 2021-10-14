@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import SectionTitle from "../../../SectionTitle";
 
-type WordSynonymTypes = {
+type WordSynonymProps = {
   synonyms: string[];
 };
 
@@ -13,7 +13,7 @@ const StyledWordSynonym = styled.div`
   }
 `;
 
-const WordSynonym: FC<WordSynonymTypes> = ({ synonyms }) => {
+const WordSynonym = ({ synonyms }: WordSynonymProps): JSX.Element => {
   const synonymEls = synonyms.map((synonym) => <span className="word__synonym" key={`word__synonym-${synonym}`}>{synonym}</span>)
 
   return (

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import clsx from 'clsx';
 
@@ -24,11 +24,11 @@ const StyledSettingsModal = styled.div`
   }
 `;
 
-type SettingsModalTypes = {
+type SettingsModalProps = {
   isOpen: boolean;
 };
 
-const SettingsModal: FC<SettingsModalTypes> = ({ isOpen }) => {
+const SettingsModal = ({ isOpen }: SettingsModalProps): JSX.Element => {
   return (
     <StyledSettingsModal className={clsx("settings-modal", isOpen && "open")}>
       this is the settings modal

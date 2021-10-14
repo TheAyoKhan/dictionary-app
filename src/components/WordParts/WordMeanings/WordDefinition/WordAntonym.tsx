@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import SectionTitle from '../../../SectionTitle';
 
-type WordAntonymTypes = {
+type WordAntonymProps = {
   antonyms: string[];
 };
 
@@ -11,7 +11,7 @@ const StyledWordAntonym = styled.div`
   flex-direction: column;
 `;
 
-const WordAntonym: FC<WordAntonymTypes> = ({ antonyms }) => {
+const WordAntonym = ({ antonyms }: WordAntonymProps): JSX.Element => {
   const antonymEls = antonyms.map((antonym) => <span className="word__antonym" key={`word__antonym-${antonym}`}>{antonym}</span>)
 
   return (

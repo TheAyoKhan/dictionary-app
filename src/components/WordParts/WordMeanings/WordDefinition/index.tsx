@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Definition } from '../../../../app/domain/wordData';
 import WordAntonyms from './WordAntonym';
 import WordSynonyms from './WordSynonym';
 
-type WordDefinitionTypes = {
+type WordDefinitionProps = {
   definitionObj: Definition;
 }
 
@@ -24,7 +24,7 @@ const StyledWordDefinition = styled.div`
   }
 `;
 
-const WordDefinitionContainer: FC<WordDefinitionTypes> = ({ definitionObj: definitionObj }) => {
+const WordDefinitionContainer = ({ definitionObj: definitionObj }: WordDefinitionProps): JSX.Element => {
   const { definition, example, synonyms, antonyms } = definitionObj;
 
   return (

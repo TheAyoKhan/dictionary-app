@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 type SectionTitleProps = {
@@ -12,7 +12,7 @@ const StyledSectionTitle = styled.span`
   font-weight: bold;
 `;
 
-const SectionTitle: FC<SectionTitleProps> = ({ className, children }) => {
+const SectionTitle = ({ className, children }: SectionTitleProps): JSX.Element => {
   return (
     <StyledSectionTitle className={`section-title ${className}`}>{children}</StyledSectionTitle>
   );

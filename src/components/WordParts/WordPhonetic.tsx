@@ -1,8 +1,8 @@
-import React, { FC, MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import { Phonetic, Phonetics } from '../../app/domain/wordData';
 
-type CardPhoneticTypes = {
+type CardPhoneticProps = {
   phonetic: Phonetic;
   phonetics: Phonetics;
 }
@@ -28,7 +28,7 @@ const StyledCardPhonetic = styled.div`
   }
 `;
 
-const CardPhoneticContainer: FC<CardPhoneticTypes> = ({ phonetic, phonetics }) => {
+const CardPhoneticContainer = ({ phonetic, phonetics }: CardPhoneticProps): JSX.Element => {
   const playAudio: MouseEventHandler<HTMLDivElement> = (event) => {
     const target = event.currentTarget;
     const audioEl: HTMLMediaElement | null = target.querySelector(".alternate-phonetic__audio");

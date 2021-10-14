@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import { WordData } from '../../app/domain/wordData';
 import { WordText, WordPhonetic, WordOrigin, WordMeanings } from '.';
-import styled from 'styled-components';
 
 const StyledWord = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const StyledWord = styled.div`
   box-shadow: 0 0 1px 1px #222;
 `;
 
-const Word: FC<WordData> = ({ word, phonetic, phonetics, origin, meanings }) => {  
+const Word = ({ word, phonetic, phonetics, origin, meanings }: WordData): JSX.Element => {  
   return (
     <StyledWord className="word">
       <WordText {...{ word }} />

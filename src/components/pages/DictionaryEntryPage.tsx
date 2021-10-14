@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { parseWordData } from "../../app/interfaces/parseWordData";
 import { WordData } from "../../app/domain/wordData";
@@ -22,7 +22,7 @@ const StyledWordPage = styled.div`
   }
 `;
 
-const WordPage: FC = () => {  
+const WordPage = (): JSX.Element => {  
   const [wordData, setWordData] = useState<WordData[] | undefined | null>(undefined);
 
   useEffect(() => {

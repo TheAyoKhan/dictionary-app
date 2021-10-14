@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
 import { ReactComponent as SettingsIconSvg } from '../settingsIcon.svg';
 
@@ -40,11 +40,11 @@ const StyledHeader = styled.div`
   }
 `;
 
-type HeaderTypes = {
+type HeaderProps = {
   handleClick: MouseEventHandler;
 };
 
-const Header: FC<HeaderTypes> = ({ handleClick }) => {
+const Header = ({ handleClick }: HeaderProps): JSX.Element => {
   return (
     <StyledHeader className="header">
       <a className="header__title" href="/">AyoDictionary</a>

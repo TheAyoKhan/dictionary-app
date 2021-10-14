@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import DictionaryEntryPage from './pages/DictionaryEntryPage';
 import Header from './Header';
 import SettingsModal from './SettingsModal';
 
-const App: FC = () => {
+const App = (): JSX.Element => {
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
 
   const handleClick: MouseEventHandler = (event) => {
