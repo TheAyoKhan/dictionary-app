@@ -32,8 +32,8 @@ const WordPage: FC = () => {
       const requestedWord = urlParams.get("w");
 
       if (requestedWord) {
-        const data = await parseWordData(requestedWord) || null;
-        setWordData(data);
+        const data = await parseWordData(requestedWord);
+        setWordData(data || null);
       } else setWordData(null);
     })();
   }, []);

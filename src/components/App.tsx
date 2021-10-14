@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import WordPage from './pages/DictionaryEntryPage';
+import DictionaryEntryPage from './pages/DictionaryEntryPage';
 import Header from './Header';
 import SettingsModal from './SettingsModal';
 
@@ -22,7 +22,7 @@ const App: FC = () => {
       <Header {...{ handleClick }} />
       <Switch>
         <Route path="/dictionary">
-          <WordPage />
+          <DictionaryEntryPage />
         </Route>
       </Switch>
       <SettingsModal {...{ isOpen: settingsIsOpen }} />
