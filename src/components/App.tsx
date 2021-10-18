@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import DictionaryEntryPage from './pages/DictionaryEntryPage';
-import Header from './Header';
+import Header from './WordParts/Header';
 import SettingsModal from './SettingsModal';
 
 const App = (): JSX.Element => {
@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
     const newSettingsIsOpen = !settingsIsOpen;
     console.log({target: event.target, newSettingsIsOpen});
     setSettingsIsOpen(newSettingsIsOpen);
-  }
+  };
 
   return (
     <Router>

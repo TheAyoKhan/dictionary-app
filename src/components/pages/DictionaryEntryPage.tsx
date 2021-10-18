@@ -22,7 +22,7 @@ const StyledWordPage = styled.div`
   }
 `;
 
-const WordPage = (): JSX.Element => {  
+const DictionaryEntryPage = (): JSX.Element => {  
   const [wordData, setWordData] = useState<WordData[] | undefined | null>(undefined);
 
   useEffect(() => {
@@ -47,4 +47,4 @@ const WordPage = (): JSX.Element => {
   );
 }
 
-export default WordPage;
+export default DictionaryEntryPage;

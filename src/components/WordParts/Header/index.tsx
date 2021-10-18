@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
-import { ReactComponent as SettingsIconSvg } from '../settingsIcon.svg';
+import { ReactComponent as SettingsIconSvg } from '../../../settingsIcon.svg';
+import SearchBar from "./SearchBar";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -15,27 +16,47 @@ const StyledHeader = styled.div`
   height: 80px;
   width: 100vw;
 
+  background-color: #222;
+
   .header__title {
-    color: #222;
+    color: #ddd;
     
     font-size: 2.5rem;
     font-weight: 900;
     margin: 0;
 
     text-decoration: none;
+
+    &:hover, &:focus {
+      color: #fff;
+    }
   }
 
   .header__settings-button {
     height: 36px;
     width: 36px;
+    
+    & > svg {
+      fill: #ddd;
+    }
 
     &:hover {
       cursor: pointer;
-   
+      
       & > svg {
-        transition: all 0.25s;
-        transform: rotate(90deg);
+        transition: transform 0.5s;
+        transform: rotate(95deg);
       }
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    background-color: red;
+  }
+
+  @keyframes settings-icon-rotate {
+    100% {
+      transform: rotate(90deg)
     }
   }
 `;
@@ -48,6 +69,7 @@ const Header = ({ handleClick }: HeaderProps): JSX.Element => {
   return (
     <StyledHeader className="header">
       <a className="header__title" href="/">AyoDictionary</a>
+      <SearchBar />
       <div 
         {...{
         className:"header__settings-button",
@@ -58,6 +80,6 @@ const Header = ({ handleClick }: HeaderProps): JSX.Element => {
       </div>
     </StyledHeader>
   );
-}
+};
 
 export default Header;
