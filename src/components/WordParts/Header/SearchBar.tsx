@@ -31,7 +31,7 @@ const SearchBar = (): JSX.Element => {
     const { value } = event.currentTarget;
     if (event.code === "Enter" || event.code === "NumpadEnter" && value.length) {
       // target.value likely does not work because the target might not always be the htmlinputelement
-      history.push(`/dictionary?w=${value}`);
+      history.push(`/dictionary/${value}`);
     };
   };
 

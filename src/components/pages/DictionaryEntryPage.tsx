@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useRouteMatch } from 'react-router-dom';
 import { parseWordData } from "../../app/interfaces/parseWordData";
 import { WordData } from "../../app/domain/wordData";
 import Loading from "../Loading";
@@ -22,20 +22,19 @@ const StyledWordPage = styled.div`
   }
 `;
 
-const DictionaryEntryPage = (): JSX.Element => {  
+const DictionaryEntryPage = (): JSX.Element => {
   const [wordData, setWordData] = useState<WordData[] | undefined | null>(undefined);
+  const match = useRouteMatch<{ requestedWord: string }>("/dictionary/:requestedWord");
 
   useEffect(() => {
-    (async () => {
-      const locationSearch = window.location.search;
-      const urlParams = new URLSearchParams(locationSearch);
-      const requestedWord = urlParams.get("w");
+    const { requestedWord } = match?.params ?? {};
 
-      if (requestedWord) {
+    if (requestedWord) {
+      (async () => {
         const data = await parseWordData(requestedWord);
         setWordData(data || null);
-      } else setWordData(null);
-    })();
+      })();
+    } else setWordData(null);
   }, []);
   
   const wordDataEls = wordData ? wordData.map((data, i) => <Word {...data} key={i} />) : <Loading />;

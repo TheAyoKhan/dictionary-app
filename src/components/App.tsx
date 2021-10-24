@@ -1,12 +1,8 @@
-import React, { MouseEventHandler, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import DictionaryEntryPage from './pages/DictionaryEntryPage';
-import Header from './WordParts/Header';
-import SettingsModal from './SettingsModal';
+import React, { MouseEventHandler, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import DictionaryEntryPage from "./pages/DictionaryEntryPage";
+import Header from "./WordParts/Header";
+import SettingsModal from "./SettingsModal";
 
 const App = (): JSX.Element => {
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
@@ -21,9 +17,7 @@ const App = (): JSX.Element => {
     <Router>
       <Header {...{ handleClick }} />
       <Switch>
-        <Route path="/dictionary">
-          <DictionaryEntryPage />
-        </Route>
+        <Route path="/dictionary" component={DictionaryEntryPage} />
       </Switch>
       <SettingsModal {...{ isOpen: settingsIsOpen }} />
     </Router>
