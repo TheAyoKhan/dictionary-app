@@ -26,20 +26,21 @@ const DictionaryEntryPage = (): JSX.Element => {
 	const [wordData, setWordData] = useState<WordData[] | undefined | null>(
 		undefined
 	);
+
 	const match = useRouteMatch<{ requestedWord: string }>(
 		'/dictionary/:requestedWord'
 	);
 
-	useEffect(() => {
-		const { requestedWord } = match?.params ?? {};
+	const { requestedWord } = match?.params ?? {};
 
+	useEffect(() => {
 		if (requestedWord) {
 			(async () => {
 				const data = await parseWordData(requestedWord);
 				setWordData(data || null);
 			})();
 		} else setWordData(null);
-	}, []);
+	}, [requestedWord]);
 
 	const wordDataEls = wordData ? (
 		wordData.map((data, i) => <Word {...data} key={i} />)
