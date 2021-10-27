@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SectionTitle from '../../../SectionTitle';
 
@@ -9,13 +10,25 @@ type WordAntonymProps = {
 const StyledWordAntonym = styled.div`
 	display: flex;
 	flex-direction: column;
+
+	.word__antonym {
+		color: #111;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 `;
 
 const WordAntonym = ({ antonyms }: WordAntonymProps): JSX.Element => {
 	const antonymEls = antonyms.map((antonym) => (
-		<span className="word__antonym" key={`word__antonym-${antonym}`}>
+		<Link
+			to={`/dictionary/${antonym}`}
+			className="word__antonym"
+			key={`word__antonym-${antonym}`}>
 			{antonym}
-		</span>
+		</Link>
 	));
 
 	return (

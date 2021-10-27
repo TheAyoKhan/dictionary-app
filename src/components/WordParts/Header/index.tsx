@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ReactComponent as SettingsIconSvg } from '../../../settingsIcon.svg';
+import { ReactComponent as SettingsIconSvg } from '../../../settings-icon.svg';
 import SearchBar from './SearchBar';
 
 const StyledHeader = styled.div`
@@ -69,9 +70,9 @@ type HeaderProps = {
 const Header = ({ handleClick }: HeaderProps): JSX.Element => {
 	return (
 		<StyledHeader className="header">
-			<a className="header__title" href="/">
+			<Link className="header__title" to="/">
 				AyoDictionary
-			</a>
+			</Link>
 			<SearchBar />
 			<div
 				{...{

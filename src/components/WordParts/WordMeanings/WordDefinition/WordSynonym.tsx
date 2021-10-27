@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SectionTitle from '../../../SectionTitle';
 
@@ -7,17 +8,27 @@ type WordSynonymProps = {
 };
 
 const StyledWordSynonym = styled.div`
-	&.word__synonyms {
-		display: flex;
-		flex-direction: column;
+	display: flex;
+	flex-direction: column;
+
+	.word__synonym {
+		color: #111;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 `;
 
 const WordSynonym = ({ synonyms }: WordSynonymProps): JSX.Element => {
 	const synonymEls = synonyms.map((synonym) => (
-		<span className="word__synonym" key={`word__synonym-${synonym}`}>
+		<Link
+			to={`/dictionary/${synonym}`}
+			className="word__synonym"
+			key={`word__synonym-${synonym}`}>
 			{synonym}
-		</span>
+		</Link>
 	));
 
 	return (
