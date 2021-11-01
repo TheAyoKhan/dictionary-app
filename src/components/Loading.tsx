@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as LoadingIconSvg } from '../loading-icon.svg';
+import { ReactComponent as LoadingIconSvg } from '../images/loading-icon.svg';
 
 const StyledLoading = styled.div`
 	.loading-icon {

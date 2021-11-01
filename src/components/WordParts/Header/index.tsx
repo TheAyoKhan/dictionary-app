@@ -1,86 +1,109 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ReactComponent as SettingsIconSvg } from '../../../settings-icon.svg';
 import SearchBar from './SearchBar';
+import { ReactComponent as SettingsIconSvg } from '../../../images/settings-icon.svg';
+import { ReactComponent as HomeIconSvg } from '../../../images/home-icon.svg';
 
 const StyledHeader = styled.div`
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+	${({ theme: { headerHeight, colours } }) => `
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
 
-	position: sticky;
-	top: 0;
-	background-color: white;
-	border-bottom: black solid 1px;
+		position: sticky;
+		top: 0;
+		background-color: white;
+		border-bottom: black solid 1px;
 
-	height: 80px;
-	width: 100vw;
+		height: ${headerHeight}px;
 
-	background-color: #222;
+		width: 100vw;
 
-	.header__title {
-		color: #ddd;
+		background-color: ${colours.primary.main};
 
-		font-size: 2.5rem;
-		font-weight: 900;
-		margin: 0;
+		.header__title {
+			color: ${colours.dark1};
 
-		text-decoration: none;
-
-		&:hover,
-		&:focus {
-			color: #fff;
-		}
-	}
-
-	.header__settings-button {
-		height: 36px;
-		width: 36px;
-
-		& > svg {
-			fill: #ddd;
+			font-family: "League Spartan";
+			font-size: 2rem;
+			font-weight: bold;
+			margin: 0;
 		}
 
-		&:hover {
-			cursor: pointer;
+		.header__link {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			
+			height: 100%;
 
-			& > svg {
-				transition: transform 0.5s;
-				transform: rotate(95deg);
+			text-decoration: none;
+
+			.header__link__svg {
+				min-height: 32px;
+				max-height: 32px;
+				fill: ${colours.dark1};
+			}
+
+			.header__link__text {				
+				color: ${colours.dark1};
+			}
+
+			&:hover, &:focus {
+				cursor: pointer;
+
+				#header__settings__svg {
+					transition: transform 0.5s;
+					transform: rotate(90deg);
+				}
 			}
 		}
-	}
 
-	@media screen and (max-width: 1000px) {
-		background-color: red;
-	}
-
-	@keyframes settings-icon-rotate {
-		100% {
-			transform: rotate(90deg);
+		@media screen and (max-width: 1000px) {
+			background-color: red;
 		}
-	}
+
+		@keyframes settings-icon-rotate {
+			100% {
+				transform: rotate(90deg);
+			}
+		}
+	`}
 `;
 
-type HeaderProps = {
-	handleClick: MouseEventHandler;
-};
-
-const Header = ({ handleClick }: HeaderProps): JSX.Element => {
+const Header = (): JSX.Element => {
 	return (
 		<StyledHeader className="header">
-			<Link className="header__title" to="/">
+			<span className="header__title">
 				AyoDictionary
-			</Link>
+			</span>
 			<SearchBar />
-			<div
+			<Link
 				{...{
-					className: 'header__settings-button',
-					onClick: handleClick,
+					to: '/',
+					id: 'header__home-link',
+					className: 'header__link',
 				}}>
-				<SettingsIconSvg />
-			</div>
+				<HomeIconSvg {...{
+					id: 'header__home__svg',
+					className:'header__link__svg'
+				} } />
+				<span className="header__link__text" >Home</span>
+			</Link>
+			<Link
+				{...{
+					to: '/settings',
+					id: 'header__settings-link',
+					className: 'header__link',
+				}}>
+				<SettingsIconSvg {...{
+					id: 'header__settings__svg',
+					className:'header__link__svg'
+				} } />
+				<span className="header__link__text" >Settings</span>
+			</Link>
 		</StyledHeader>
 	);
 };

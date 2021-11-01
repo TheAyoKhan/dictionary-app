@@ -6,19 +6,17 @@ const StlyedSearchBar = styled.div`
 	width: 40%;
 	height: 30%;
 	border: 1px solid #222;
-	border-radius: 5px;
+	border-radius: ${({theme}) => theme.borderRadius};
 	margin: 50px;
 
 	.search-bar__input {
 		width: calc(100% - 4px);
 		height: calc(100% - 2px);
 		border: none;
-		background-color: #ddd;
 		text-align: center;
 		border-radius: 5px;
 
 		&:focus {
-			background-color: #fff;
 			outline: none;
 		}
 	}

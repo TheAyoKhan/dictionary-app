@@ -1,26 +1,47 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DictionaryEntryPage from './pages/DictionaryEntryPage';
+import SettingsPage from './pages/SettingsPage';
+import GlobalStyle from './GlobalStyles';
+import GlobalFonts from '../fonts/GlobalFonts'
 import Header from './WordParts/Header';
-import SettingsModal from './SettingsModal';
+import theme from '../theme';
 
 const App = (): JSX.Element => {
-	const [settingsIsOpen, setSettingsIsOpen] = useState(false);
+	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
-	const handleClick: MouseEventHandler = (event) => {
-		const newSettingsIsOpen = !settingsIsOpen;
-		console.log({ target: event.target, newSettingsIsOpen });
-		setSettingsIsOpen(newSettingsIsOpen);
-	};
+	useEffect(() => {
+		const cookiesArray = document.cookie.split("; ");
+		const a = cookiesArray.find(row => row.startsWith('darkMode='));
+
+		if (a) setDarkModeEnabled(a?.split('=')[1] === "true");
+		else document.cookie = `darkTheme=false; SameSite=Strict;`;
+
+		console.log({s: document.cookie.split("; "), a});	
+	}, []);
 
 	return (
-		<Router>
-			<Header {...{ handleClick }} />
-			<Switch>
-				<Route path="/dictionary" component={DictionaryEntryPage} />
-			</Switch>
-			<SettingsModal {...{ isOpen: settingsIsOpen }} />
-		</Router>
+		<ThemeProvider {...{ theme }}>
+			<GlobalStyle {...{ darkModeEnabled }} />
+			<GlobalFonts />
+			<div className="App">
+				<Router>
+					<Header />
+					<Switch>
+						<Route
+							{...{ path: '/dictionary', component: DictionaryEntryPage }}
+						/>
+						<Route
+							{...{
+								path: '/settings',
+								render: () => <SettingsPage {...{ darkModeEnabled, setDarkModeEnabled }} />,
+							}}
+						/>
+					</Switch>
+				</Router>
+			</div>
+		</ThemeProvider>
 	);
 };
 
