@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler } from 'react';
 import styled from 'styled-components';
-import toCamelCase from '../app/shared/toCamelCase';
+import toCamelCase from '../utils/toCamelCase';
 
 const StyledToggle = styled.div``;
 
@@ -14,11 +14,13 @@ type ToggleProps = {
 
 const Toggle = ({ name, checked, stateUpdateFunction }: ToggleProps): JSX.Element => {
 	const toggleFunction: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
-		const { checked } = target;
-		stateUpdateFunction(checked);
+		const { checked: inputChecked } = target;
+		stateUpdateFunction(inputChecked);
+
 		const nameToCamelCase = toCamelCase(name);
-		document.cookie = `${nameToCamelCase}=${checked}; SameSite=Strict;`;
-		console.log(document.cookie);
+		document.cookie = `${nameToCamelCase}=${inputChecked}; SameSite=Strict;`;
+
+		console.log({state: inputChecked, cookies: document.cookie});
 	};
 
 	return (

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
-import { ReactComponent as SettingsIconSvg } from '../../../images/settings-icon.svg';
-import { ReactComponent as HomeIconSvg } from '../../../images/home-icon.svg';
+import { ReactComponent as SettingsIconSvg } from '../../images/settings-icon.svg';
+import { ReactComponent as HomeIconSvg } from '../../images/home-icon.svg';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
 const StyledHeader = styled.div`
 	${({ theme: { headerHeight, colours } }) => `
@@ -74,11 +75,15 @@ const StyledHeader = styled.div`
 `;
 
 const Header = (): JSX.Element => {
+	const { darkModeEnabled } = useContext(DarkModeContext) ?? {};
+
 	return (
-		<StyledHeader className="header">
-			<span className="header__title">
-				AyoDictionary
-			</span>
+		<StyledHeader
+			{...{
+				className: 'header',
+				darkModeEnabled,
+			}}>
+			<span className="header__title">AyoDictionary</span>
 			<SearchBar />
 			<Link
 				{...{
@@ -86,11 +91,13 @@ const Header = (): JSX.Element => {
 					id: 'header__home-link',
 					className: 'header__link',
 				}}>
-				<HomeIconSvg {...{
-					id: 'header__home__svg',
-					className:'header__link__svg'
-				} } />
-				<span className="header__link__text" >Home</span>
+				<HomeIconSvg
+					{...{
+						id: 'header__home__svg',
+						className: 'header__link__svg',
+					}}
+				/>
+				<span className="header__link__text">Home</span>
 			</Link>
 			<Link
 				{...{
@@ -98,11 +105,13 @@ const Header = (): JSX.Element => {
 					id: 'header__settings-link',
 					className: 'header__link',
 				}}>
-				<SettingsIconSvg {...{
-					id: 'header__settings__svg',
-					className:'header__link__svg'
-				} } />
-				<span className="header__link__text" >Settings</span>
+				<SettingsIconSvg
+					{...{
+						id: 'header__settings__svg',
+						className: 'header__link__svg',
+					}}
+				/>
+				<span className="header__link__text">Settings</span>
 			</Link>
 		</StyledHeader>
 	);

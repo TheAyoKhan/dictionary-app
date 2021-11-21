@@ -8,10 +8,9 @@ import styled from 'styled-components';
 
 const StyledWordPage = styled.div`
 	padding: 0.5em;
-	display: flex;
+	display: grid;
 	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+	place-items: center;
 
 	.word {
 		margin-bottom: 1.5em;

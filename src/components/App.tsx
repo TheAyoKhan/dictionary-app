@@ -1,47 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import clsx from 'clsx';
+import React, { useContext, useEffect } from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import styled from 'styled-components';
+import { DarkModeContext } from '../context/DarkModeContext';
+import Header from './Header';
 import DictionaryEntryPage from './pages/DictionaryEntryPage';
 import SettingsPage from './pages/SettingsPage';
-import GlobalStyle from './GlobalStyles';
-import GlobalFonts from '../fonts/GlobalFonts'
-import Header from './WordParts/Header';
-import theme from '../theme';
+
+const StyledApp = styled.div`
+	height: 100%;
+  
+  &.dm {
+    background-color: #222;
+    color: #fff;
+  }
+`;
 
 const App = (): JSX.Element => {
-	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+	const { darkModeEnabled, setDarkModeEnabled } = useContext(DarkModeContext);
 
 	useEffect(() => {
-		const cookiesArray = document.cookie.split("; ");
-		const a = cookiesArray.find(row => row.startsWith('darkMode='));
+		const cookiesArray = document.cookie.split('; ');
+		const a = cookiesArray.find((row) => row.startsWith('darkMode='));
 
-		if (a) setDarkModeEnabled(a?.split('=')[1] === "true");
-		else document.cookie = `darkTheme=false; SameSite=Strict;`;
+		if (a) setDarkModeEnabled(a?.split('=')[1] === 'true');
+		else document.cookie = `darkMode=true; SameSite=Strict;`;
 
-		console.log({s: document.cookie.split("; "), a});	
-	}, []);
+		console.log({ s: document.cookie.split('; '), a });
+	}, [setDarkModeEnabled]);
 
 	return (
-		<ThemeProvider {...{ theme }}>
-			<GlobalStyle {...{ darkModeEnabled }} />
-			<GlobalFonts />
-			<div className="App">
-				<Router>
-					<Header />
-					<Switch>
-						<Route
-							{...{ path: '/dictionary', component: DictionaryEntryPage }}
-						/>
-						<Route
-							{...{
-								path: '/settings',
-								render: () => <SettingsPage {...{ darkModeEnabled, setDarkModeEnabled }} />,
-							}}
-						/>
-					</Switch>
-				</Router>
-			</div>
-		</ThemeProvider>
+		<StyledApp className={clsx('App', darkModeEnabled && 'dm')}>
+			<Router>
+				<Header />
+				<Switch>
+					<Route {...{ path: '/dictionary', component: DictionaryEntryPage }} />
+					<Route
+						{...{
+							path: '/settings',
+							component: SettingsPage,
+						}}></Route>
+				</Switch>
+			</Router>
+		</StyledApp>
 	);
 };
 
