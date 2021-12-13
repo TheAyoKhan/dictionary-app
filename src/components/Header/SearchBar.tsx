@@ -1,48 +1,64 @@
-import React, { KeyboardEventHandler } from 'react';
+import React, { KeyboardEventHandler, MouseEventHandler, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import { alpha, styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
-const StlyedSearchBar = styled.div`
-	width: 40%;
-	height: 30%;
-	border: 1px solid #222;
-	border-radius: ${({ theme }) => theme.borderRadius};
-	margin: 50px;
+const Search = styled('div')(({ theme }) => ({
+	width: '100%',
+	borderRadius: theme.shape.borderRadius,
+	backgroundColor: alpha(theme.palette.common.white, 0.15),
+	'&:hover': {
+		backgroundColor: alpha(theme.palette.common.white, 0.25),
+	},
+	marginLeft: 0,
+}));
 
-	.search-bar__input {
-		width: calc(100% - 4px);
-		height: calc(100% - 2px);
-		border: none;
-		text-align: center;
-		border-radius: 5px;
-
-		&:focus {
-			outline: none;
-		}
-	}
-`;
+const StyledInput = styled(InputBase)(({ theme }) => ({
+	'.MuiInputBase-input': {
+		padding: theme.spacing(1, 1, 1, 0),
+		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+		width: 'calc(100% - 4px)',
+		height: 'calc(100% - 2px)',
+	},
+}));
 
 const SearchBar = (): JSX.Element => {
 	const history = useHistory();
+	const inputRef = useRef<HTMLInputElement>(null);
 
-	const KeyPressHandler: KeyboardEventHandler<HTMLInputElement> = (event) => {
-		const { value } = event.currentTarget;
-		if (
-			event.code === 'Enter' ||
-			(event.code === 'NumpadEnter' && value.length)
-		) {
-			// target.value likely does not work because the target might not always be the htmlinputelement
-			history.push(`/dictionary/${value}`);
-		}
+	const keyPressHandler: KeyboardEventHandler<HTMLDivElement> = ({ code }) => {
+		// "as HTMLInputElement" is used to make TypeSript think the ovject type is an HTMLInputElement, which doesn't have a value property
+		const { value } = inputRef.current ?? ({} as HTMLInputElement);
+		if (code === 'Enter' || code === 'NumpadEnter') searchHandler(value ?? '');
+	};
+
+	const searchButtonClickHandler: MouseEventHandler<HTMLButtonElement> = () => {
+		const { value } = inputRef.current ?? ({} as HTMLInputElement);
+		searchHandler(value ?? '');
+	};
+
+	const searchHandler = (query: string) => {
+		if (query?.length) history.push(`/dictionary/${query}`);
 	};
 
 	return (
-		<StlyedSearchBar className="search-bar">
-			<input
-				className="search-bar__input"
-				placeholder="What word would you like defined?"
-				onKeyPress={KeyPressHandler}></input>
-		</StlyedSearchBar>
+		<div>
+			<Search className="search-bar">
+				<IconButton onClick={searchButtonClickHandler}>
+					<SearchIcon />
+				</IconButton>
+				<StyledInput
+					{...{
+						inputRef,
+						className: 'search-bar__input',
+						placeholder: 'Take a search',
+						onKeyPress: keyPressHandler,
+					}}
+				/>
+			</Search>
+		</div>
 	);
 };
 

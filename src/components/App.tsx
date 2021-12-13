@@ -1,19 +1,18 @@
 import clsx from 'clsx';
 import React, { useContext, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@mui/material/styles/styled';
 import { DarkModeContext } from '../context/DarkModeContext';
 import Header from './Header';
 import DictionaryEntryPage from './pages/DictionaryEntryPage';
 import SettingsPage from './pages/SettingsPage';
 
-const StyledApp = styled.div`
-	height: 100%;
-  
-  &.dm {
-    background-color: #222;
-    color: #fff;
-  }
+const StyledApp = styled('div')`
+	height: 100%,
+	.dm: {
+		background-color: #222,
+		color: #fff,
+	},
 `;
 
 const App = (): JSX.Element => {

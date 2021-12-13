@@ -1,27 +1,22 @@
-import { DefaultTheme } from 'styled-components';
+import { createTheme } from '@material-ui/core';
 
-const theme: DefaultTheme = {
-	borderRadius: 5,
-	headerHeight: 80,
-
-	colours: {
-		dark1: '#000',
-		dark2: '#222',
-		light1: '#fff',
-		light2: '#eee',
-
+const theme = createTheme({
+	palette: {
+		type: 'light',
 		primary: {
 			main: '#2196f3',
 			light: '#6ec6ff',
 			dark: '#0069c0',
 		},
-
 		secondary: {
 			main: '#ffca28',
 			light: '#fffd61',
 			dark: '#c79a00',
 		},
 	},
-};
+	typography: {
+		fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+	}
+});
 
 export default theme;
