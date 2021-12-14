@@ -6,6 +6,10 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled('div')(({ theme }) => ({
+	[theme.breakpoints.down('xs')]: {
+		display: 'none',
+	},
+	display: 'flex',
 	width: '100%',
 	borderRadius: theme.shape.borderRadius,
 	backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -13,15 +17,12 @@ const Search = styled('div')(({ theme }) => ({
 		backgroundColor: alpha(theme.palette.common.white, 0.25),
 	},
 	marginLeft: 0,
+	flexBasis: '400px',
 }));
 
 const StyledInput = styled(InputBase)(({ theme }) => ({
-	'.MuiInputBase-input': {
-		padding: theme.spacing(1, 1, 1, 0),
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		width: 'calc(100% - 4px)',
-		height: 'calc(100% - 2px)',
-	},
+	width: '100%',
+	// height: '100%',
 }));
 
 const SearchBar = (): JSX.Element => {
@@ -44,21 +45,19 @@ const SearchBar = (): JSX.Element => {
 	};
 
 	return (
-		<div>
-			<Search className="search-bar">
-				<IconButton onClick={searchButtonClickHandler}>
-					<SearchIcon />
-				</IconButton>
-				<StyledInput
-					{...{
-						inputRef,
-						className: 'search-bar__input',
-						placeholder: 'Take a search',
-						onKeyPress: keyPressHandler,
-					}}
-				/>
-			</Search>
-		</div>
+		<Search className="search-bar">
+			<IconButton onClick={searchButtonClickHandler}>
+				<SearchIcon />
+			</IconButton>
+			<StyledInput
+				{...{
+					inputRef,
+					className: 'search-bar__input',
+					placeholder: 'What would you liked defined?',
+					onKeyPress: keyPressHandler,
+				}}
+			/>
+		</Search>
 	);
 };
 

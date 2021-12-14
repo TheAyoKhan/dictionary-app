@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from '@mui/material/Link';
-import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import styled from '@mui/system/styled';
 import { Page } from "../../../types/pages";
 
@@ -13,7 +13,7 @@ const StyledLink = styled(Link)({
 
 const NavLink = ({ page: { name, path } }: { page: Page }): JSX.Element => (
   <StyledLink key={name} href={path} id={`header__${name}-link`} className={'header__link'} >
-    <Typography color="textPrimary">{name}</Typography>
+    <Button color="secondary">{name}</Button>
   </StyledLink>
 );
 
