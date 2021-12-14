@@ -8,9 +8,9 @@ const StyledNav = styled('nav')(({ theme }) => ({
 		display: 'none',
 	},
 	display: 'flex',
-  flexBasis: '200px',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+	flexBasis: '200px',
+	justifyContent: 'space-between',
+	alignItems: 'center',
 }));
 
 const NavLinks = ({ pages }: { pages: Pages }): JSX.Element => {
@@ -22,7 +22,5 @@ const NavLinks = ({ pages }: { pages: Pages }): JSX.Element => {
 		</StyledNav>
 	);
 };
-
-
 
 export default NavLinks;

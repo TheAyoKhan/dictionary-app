@@ -12,7 +12,11 @@ type ToggleProps = {
 	stateUpdateFunction: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Toggle = ({ name, checked, stateUpdateFunction }: ToggleProps): JSX.Element => {
+const Toggle = ({
+	name,
+	checked,
+	stateUpdateFunction,
+}: ToggleProps): JSX.Element => {
 	const toggleFunction: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
 		const { checked: inputChecked } = target;
 		stateUpdateFunction(inputChecked);
@@ -20,7 +24,7 @@ const Toggle = ({ name, checked, stateUpdateFunction }: ToggleProps): JSX.Elemen
 		const nameToCamelCase = toCamelCase(name);
 		document.cookie = `${nameToCamelCase}=${inputChecked}; SameSite=Strict;`;
 
-		console.log({state: inputChecked, cookies: document.cookie});
+		console.log({ state: inputChecked, cookies: document.cookie });
 	};
 
 	return (

@@ -18,7 +18,9 @@ const Header = (): JSX.Element => {
 			}}>
 			<Toolbar color="black" sx={{ justifyContent: 'space-between' }}>
 				<NavMenu {...{ pages }} />
-				<Typography sx={{ fontWeight: '500' }} variant="h4">AyoDictionary</Typography>
+				<Typography sx={{ fontWeight: '500' }} variant="h4">
+					AyoDictionary
+				</Typography>
 				<NavLinks {...{ pages }} />
 				<SearchBar />
 			</Toolbar>

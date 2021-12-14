@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 import LeagueSpartan from './LeagueSpartan-Bold.woff2';
 import GlacialIndifferenceRegular from './GlacialIndifference-Regular.woff2';
 import GlacialIndifferenceBold from './GlacialIndifference-Bold.woff2';

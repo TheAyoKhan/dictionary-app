@@ -8,7 +8,7 @@ const StyledSettingsPage = styled.div`
 	place-items: center;
 	height: 100%;
 	padding: 0.5em;
-	
+
 	.settings__list {
 		width: 80%;
 		height: 100%;
@@ -23,7 +23,11 @@ const SettingsPage = (): JSX.Element => {
 			<div className="settings__list">
 				<div id="settings__dark-mode">
 					<Toggle
-						{...{ name: 'Dark Mode', checked: darkModeEnabled, stateUpdateFunction: setDarkModeEnabled }}
+						{...{
+							name: 'Dark Mode',
+							checked: darkModeEnabled,
+							stateUpdateFunction: setDarkModeEnabled,
+						}}
 					/>
 				</div>
 			</div>
