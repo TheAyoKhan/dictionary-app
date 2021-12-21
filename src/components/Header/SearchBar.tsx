@@ -17,12 +17,7 @@ const Search = styled('div')(({ theme }) => ({
 		backgroundColor: alpha(theme.palette.common.white, 0.25),
 	},
 	marginLeft: 0,
-	flexBasis: '400px',
-}));
-
-const StyledInput = styled(InputBase)(({ theme }) => ({
-	width: '100%',
-	// height: '100%',
+	flexBasis: '275px',
 }));
 
 const SearchBar = (): JSX.Element => {
@@ -30,7 +25,8 @@ const SearchBar = (): JSX.Element => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const keyPressHandler: KeyboardEventHandler<HTMLDivElement> = ({ code }) => {
-		// "as HTMLInputElement" is used to make TypeSript think the ovject type is an HTMLInputElement, which doesn't have a value property
+		// "as HTMLInputElement" is used to make TypeSript think the object type is an HTMLInputElement
+		// or else ti wil think it doesn't have a "value" property
 		const { value } = inputRef.current ?? ({} as HTMLInputElement);
 		if (code === 'Enter' || code === 'NumpadEnter') searchHandler(value ?? '');
 	};
@@ -49,12 +45,13 @@ const SearchBar = (): JSX.Element => {
 			<IconButton onClick={searchButtonClickHandler}>
 				<SearchIcon />
 			</IconButton>
-			<StyledInput
+			<InputBase
 				{...{
 					inputRef,
 					className: 'search-bar__input',
 					placeholder: 'What would you liked defined?',
 					onKeyPress: keyPressHandler,
+					sx: { width: '100%', },
 				}}
 			/>
 		</Search>
