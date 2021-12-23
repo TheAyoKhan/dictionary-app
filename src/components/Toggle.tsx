@@ -1,8 +1,5 @@
 import React, { ChangeEventHandler } from 'react';
-import styled from 'styled-components';
 import toCamelCase from '../utils/toCamelCase';
-
-const StyledToggle = styled.div``;
 
 type ToggleProps = {
 	name: string;
@@ -28,7 +25,7 @@ const Toggle = ({
 	};
 
 	return (
-		<StyledToggle className="toggle">
+		<div className="toggle">
 			<label
 				{...{
 					className: 'toggle__label',
@@ -46,7 +43,7 @@ const Toggle = ({
 					onChange: toggleFunction,
 				}}
 			/>
-		</StyledToggle>
+		</div>
 	);
 };
 

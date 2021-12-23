@@ -1,37 +1,37 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import { Definition } from '../../../../app/domain/wordData';
 import WordAntonyms from './WordAntonym';
 import WordSynonyms from './WordSynonym';
+import Typography from '@mui/material/Typography';
 
 type WordDefinitionProps = {
 	definitionObj: Definition;
 };
 
-const StyledWordDefinition = styled.div`
-	display: flex;
-	flex-direction: column;
+const StyledWordDefinition = styled('div')(({ theme }) => ({
+	display: 'flex',
+	flexDirection: 'column',
 
-	margin-top: 1em;
-	margin-bottom: 1em;
-	padding: 0.5em;
-	border-radius: 8px;
+	margin: theme.spacing(2, 0),
+	padding: theme.spacing(1),
+	borderRadius: theme.shape.borderRadius,
 
-	background-color: #ddd;
+	backgroundColor: '#ddd',
 
-	.word__example {
-		font-style: italic;
+	'.word__example': {
+		fontStyle: 'italic',
 	}
-`;
+}));
 
 const WordDefinitionContainer = ({
-	definitionObj: definitionObj,
+	definitionObj
 }: WordDefinitionProps): JSX.Element => {
 	const { definition, example, synonyms, antonyms } = definitionObj;
 
 	return (
 		<StyledWordDefinition className="word__definition-container">
-			<span className="word__definition">{definition}</span>
+			<Typography className="word__definition">{definition}</Typography>
 			{example && <span className="word__example">“{example}”</span>}
 			{synonyms.length > 0 && <WordSynonyms {...{ synonyms }} />}
 			{antonyms.length > 0 && <WordAntonyms {...{ antonyms }} />}

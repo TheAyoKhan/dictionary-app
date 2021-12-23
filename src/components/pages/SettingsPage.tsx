@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import Toggle from '../Toggle';
 import { DarkModeContext } from '../../context/DarkModeContext';
 
-const StyledSettingsPage = styled.div`
-	display: grid;
-	place-items: center;
-	height: 100%;
-	padding: 0.5em;
+const StyledSettingsPage = styled('div')(({ theme }) => ({
+	display: 'grid',
+	placeItems: 'center',
+	height: '100%',
+	padding: theme.spacing(1),
 
-	.settings__list {
-		width: 80%;
-		height: 100%;
+	'.settings__list': {
+		width: '80%',
+		height: '100%',
 	}
-`;
+}));
 
 const SettingsPage = (): JSX.Element => {
 	const { darkModeEnabled, setDarkModeEnabled } = useContext(DarkModeContext);

@@ -1,25 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import SectionTitle from '../../../SectionTitle';
 
 type WordSynonymProps = {
 	synonyms: string[];
 };
 
-const StyledWordSynonym = styled.div`
-	display: flex;
-	flex-direction: column;
+const StyledWordSynonym = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
 
-	.word__synonym {
-		color: #111;
-		text-decoration: none;
+	'.word__synonym': {
+		color: '#111',
+		textDecoration: 'none',
 
-		&:hover {
-			text-decoration: underline;
+		'&:hover': {
+			textDecoration: 'underline',
 		}
 	}
-`;
+});
 
 const WordSynonym = ({ synonyms }: WordSynonymProps): JSX.Element => {
 	const synonymEls = synonyms.map((synonym) => (

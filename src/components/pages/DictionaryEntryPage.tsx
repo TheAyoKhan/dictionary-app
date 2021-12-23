@@ -4,22 +4,22 @@ import { parseWordData } from '../../app/interfaces/parseWordData';
 import { WordData } from '../../app/domain/wordData';
 import Loading from '../Loading';
 import Word from '../WordParts/Word';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 
-const StyledWordPage = styled.div`
-	padding: 0.5em;
-	display: grid;
-	flex-direction: column;
-	place-items: center;
+const StyledWordPage = styled('div')(({ theme }) => ({
+	padding: theme.spacing(1),
+	display: 'grid',
+	flexDirection: 'column',
+	placeItems: 'center',
 
-	.word {
-		margin-bottom: 1.5em;
+	'.word': {
+		marginBottom: theme.spacing(3),
 
-		&:last-child {
-			margin-bottom: 0;
+		'&:last-child': {
+			marginBottom: 0,
 		}
 	}
-`;
+}));
 
 const DictionaryEntryPage = (): JSX.Element => {
 	const [wordData, setWordData] = useState<WordData[] | undefined | null>(

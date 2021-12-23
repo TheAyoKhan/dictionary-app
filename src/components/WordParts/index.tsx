@@ -1,6 +1,3 @@
-import WordText from './WordText';
-import WordPhonetic from './WordPhonetic';
-import WordOrigin from './WordOrigin';
-import WordMeanings from './WordMeanings';
-
-export { WordText, WordPhonetic, WordOrigin, WordMeanings };
+export { default as WordPhonetic } from './WordPhonetic';
+export { default as WordOrigin } from './WordOrigin';
+export { default as WordMeanings } from './WordMeanings';

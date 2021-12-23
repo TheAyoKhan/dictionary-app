@@ -1,25 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import SectionTitle from '../../../SectionTitle';
 
 type WordAntonymProps = {
 	antonyms: string[];
 };
 
-const StyledWordAntonym = styled.div`
-	display: flex;
-	flex-direction: column;
+const StyledWordAntonym = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
 
-	.word__antonym {
-		color: #111;
-		text-decoration: none;
+	'.word__antonym': {
+		color: '#111',
+		textDecoration: 'none',
 
-		&:hover {
-			text-decoration: underline;
+		'&:hover': {
+			textDecoration: 'underline',
 		}
 	}
-`;
+});
 
 const WordAntonym = ({ antonyms }: WordAntonymProps): JSX.Element => {
 	const antonymEls = antonyms.map((antonym) => (

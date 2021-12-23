@@ -1,16 +1,17 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
+import Typography from '@mui/material/Typography';
 
 type SectionTitleProps = {
 	className: string;
 	children: ReactNode;
 };
 
-const StyledSectionTitle = styled.span`
-	margin-top: 0.5em;
-	font-size: 1.25rem;
-	font-weight: bold;
-`;
+const StyledSectionTitle = styled(Typography)(({theme}) => ({
+	marginTop: theme.spacing(1),
+	fontSize: '1.25em',
+	fontWeight: 'bold',
+}));
 
 const SectionTitle = ({
 	className,

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import WordDefinition from './WordDefinition';
 import { Meaning } from '../../../app/domain/wordData';
 
@@ -7,17 +7,16 @@ type WordMeaningProps = {
 	meaning: Meaning;
 };
 
-const StyledWordMeaning = styled.div`
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	padding: 0.5em;
-	border-radius: 8px;
-	background-color: #eee;
+const StyledWordMeaning = styled('div')(({theme}) => ({
+	margin: theme.spacing(1, 0),
+	padding: theme.spacing(1),
+	borderRadius: theme.shape.borderRadius,
+	backgroundColor: '#eee',
 
-	.word__part-of-speech {
-		font-style: italic;
+	'.word__part-of-speech': {
+		fontStyle: 'italic',
 	}
-`;
+}));
 
 const WordMeaning = ({ meaning }: WordMeaningProps): JSX.Element => {
 	const { partOfSpeech, definitions } = meaning;

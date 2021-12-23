@@ -1,32 +1,33 @@
 import React, { MouseEventHandler } from 'react';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import { Phonetic, Phonetics } from '../../app/domain/wordData';
+import { Typography } from '@mui/material';
 
 type CardPhoneticProps = {
 	phonetic: Phonetic;
 	phonetics: Phonetics;
 };
 
-const StyledCardPhonetic = styled.div`
-	.word__phonetic {
-		color: #333;
-		font-size: 1.25rem;
-	}
+const StyledCardPhonetic = styled('div')({
+	'.word__phonetic': {
+		color: '#333',
+		fontSize: '1.25em',
+	},
 
-	.word__alternate-phonetics {
-		display: flex;
-		color: #333;
+	'.word__alternate-phonetics': {
+		display: 'flex',
+		color: '#333',
 
-		.alternate-phonetic {
-			text-decoration: underline;
+		'.alternate-phonetic': {
+			textDecoration: 'underline',
 
-			&:hover {
-				text-decoration: none;
-				cursor: pointer;
+			'&:hover': {
+				textDecoration: 'none',
+				cursor: 'pointer',
 			}
 		}
 	}
-`;
+});
 
 const CardPhoneticContainer = ({
 	phonetic,
@@ -49,7 +50,7 @@ const CardPhoneticContainer = ({
 					onClick={playAudio}
 					className="alternate-phonetic"
 					title="Click to play audio">
-					<span className="alternate-phonetic__text">{text}</span>
+					<Typography className="alternate-phonetic__text">{text}</Typography>
 					<audio className="alternate-phonetic__audio">
 						<source src={audioLink} type="audio/mp3" />
 					</audio>
@@ -60,9 +61,9 @@ const CardPhoneticContainer = ({
 
 	return (
 		<StyledCardPhonetic className="word__phonetics">
-			<span className="word__phonetic" title="Main phonetic">
+			<Typography className="word__phonetic" title="Main phonetic">
 				{phonetic}
-			</span>
+			</Typography>
 			<div className="word__alternate-phonetics">{alternatePhonetics}</div>
 		</StyledCardPhonetic>
 	);

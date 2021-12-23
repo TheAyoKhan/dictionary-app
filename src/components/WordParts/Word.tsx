@@ -1,18 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@mui/system/styled';
 import { WordData } from '../../app/domain/wordData';
-import { WordText, WordPhonetic, WordOrigin, WordMeanings } from '.';
+import { WordPhonetic, WordOrigin, WordMeanings } from '.';
+import { Typography } from '@mui/material';
 
-const StyledWord = styled.div`
-	display: flex;
-	flex-direction: column;
+const StyledWord = styled('div')(({ theme }) => ({
+	display: 'flex',
+	flexDirection: 'column',
 
-	width: 80%;
-	padding: 0.5em;
+	width: '80%',
+	padding: theme.spacing(1),
 
-	border-radius: 5px;
-	box-shadow: 0 0 1px 1px #222;
-`;
+	borderRadius: theme.shape.borderRadius,
+	boxShadow: '0 0 1px 1px #222',
+}));
 
 const Word = ({
 	word,
@@ -23,7 +24,7 @@ const Word = ({
 }: WordData): JSX.Element => {
 	return (
 		<StyledWord className="word">
-			<WordText {...{ word }} />
+			<Typography variant="h5" className="word__text">{word}</Typography>
 			<WordPhonetic {...{ phonetic, phonetics }} />
 			<WordOrigin {...{ origin }} />
 			<WordMeanings {...{ meanings }} />
