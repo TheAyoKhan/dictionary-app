@@ -1,3 +1,4 @@
+import styled from '@mui/system/styled';
 import React, { ChangeEventHandler } from 'react';
 import toCamelCase from '../utils/toCamelCase';
 
@@ -9,11 +10,25 @@ type ToggleProps = {
 	stateUpdateFunction: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+const StyledToggle = styled('div')`
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	font-size: 1.5rem;
+
+	input {
+		transform: scale(1.5);
+	}
+`;
+
 const Toggle = ({
 	name,
 	checked,
 	stateUpdateFunction,
 }: ToggleProps): JSX.Element => {
+	const nameDashed = name.toLowerCase().split(' ').join('-');
+
 	const toggleFunction: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
 		const { checked: inputChecked } = target;
 		stateUpdateFunction(inputChecked);
@@ -25,17 +40,21 @@ const Toggle = ({
 	};
 
 	return (
-		<div className="toggle">
+		<StyledToggle
+			{...{
+				id: `toggle-${nameDashed}-container`,
+				className: 'toggle__container',
+			}}>
 			<label
 				{...{
 					className: 'toggle__label',
-					htmlFor: name,
+					htmlFor: `toggle-${nameDashed}`,
 				}}>
 				{name}
 			</label>
 			<input
 				{...{
-					id: `toggle-${name}`,
+					id: `toggle-${nameDashed}`,
 					className: 'toggle__input',
 					name,
 					type: 'checkbox',
@@ -43,7 +62,7 @@ const Toggle = ({
 					onChange: toggleFunction,
 				}}
 			/>
-		</div>
+		</StyledToggle>
 	);
 };
 

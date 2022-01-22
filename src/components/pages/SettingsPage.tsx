@@ -12,10 +12,12 @@ const StyledSettingsPage = styled('div')(({ theme }) => ({
 	'.settings__list': {
 		width: '80%',
 		height: '100%',
-	}
+	},
 }));
 
 const SettingsPage = (): JSX.Element => {
+	document.title = 'Settings - AyoDictionary';
+
 	const { darkModeEnabled, setDarkModeEnabled } = useContext(DarkModeContext);
 
 	return (

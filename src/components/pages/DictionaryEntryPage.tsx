@@ -17,8 +17,8 @@ const StyledWordPage = styled('div')(({ theme }) => ({
 
 		'&:last-child': {
 			marginBottom: 0,
-		}
-	}
+		},
+	},
 }));
 
 const DictionaryEntryPage = (): JSX.Element => {
@@ -39,6 +39,8 @@ const DictionaryEntryPage = (): JSX.Element => {
 				setWordData(data || null);
 			})();
 		} else setWordData(null);
+
+		document.title = `${requestedWord} - AyoDictionary`;
 	}, [requestedWord]);
 
 	const wordDataEls = wordData ? (
