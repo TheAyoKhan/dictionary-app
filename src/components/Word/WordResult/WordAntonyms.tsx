@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@mui/system/styled';
-import SectionTitle from '../../../SectionTitle';
+import Typography from '@mui/material/Typography';
 
 type WordAntonymProps = {
 	antonyms: string[];
@@ -17,8 +17,8 @@ const StyledWordAntonym = styled('div')({
 
 		'&:hover': {
 			textDecoration: 'underline',
-		}
-	}
+		},
+	},
 });
 
 const WordAntonym = ({ antonyms }: WordAntonymProps): JSX.Element => {
@@ -33,7 +33,9 @@ const WordAntonym = ({ antonyms }: WordAntonymProps): JSX.Element => {
 
 	return (
 		<StyledWordAntonym className="word__antonym">
-			<SectionTitle className="antonyms-title">Antonyms</SectionTitle>
+			<Typography variant="h2" className="antonyms-title">
+				Antonyms
+			</Typography>
 			{antonymEls}
 		</StyledWordAntonym>
 	);

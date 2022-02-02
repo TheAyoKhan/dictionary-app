@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, useRouteMatch } from 'react-router-dom';
 import { parseWordData } from '../../app/interfaces/parseWordData';
-import { WordData } from '../../app/domain/wordData';
 import Loading from '../Loading';
-import Word from '../WordParts/Word';
 import styled from '@mui/system/styled';
+import { WordData } from '../../app/domain/wordData';
+import Word from '../Word';
 
 const StyledWordPage = styled('div')(({ theme }) => ({
 	padding: theme.spacing(1),
@@ -22,7 +22,7 @@ const StyledWordPage = styled('div')(({ theme }) => ({
 }));
 
 const DictionaryEntryPage = (): JSX.Element => {
-	const [wordData, setWordData] = useState<WordData[] | undefined | null>(
+	const [wordData, setWordData] = useState<WordData | undefined | null>(
 		undefined
 	);
 
@@ -43,18 +43,19 @@ const DictionaryEntryPage = (): JSX.Element => {
 		document.title = `${requestedWord} - AyoDictionary`;
 	}, [requestedWord]);
 
-	const wordDataEls = wordData ? (
-		wordData.map((data, i) => <Word {...data} key={i} />)
-	) : (
-		<Loading />
-	);
-
 	return (
 		<StyledWordPage className="Word-Page">
+			{console.log(wordData)}
 			{wordData ? (
-				wordDataEls
+				<Word
+					{...{
+						word: wordData?.word,
+						results: wordData?.results,
+						pronounciations: wordData?.pronounciations,
+					}}
+				/>
 			) : wordData === null ? (
-				<Redirect to="/" />
+				<Redirect to="/no-entry-found" />
 			) : (
 				<Loading />
 			)}

@@ -1,32 +1,51 @@
 export type Word = string;
 
-export type Phonetic = string;
+export type PartOfSpeech = 'noun' | 'adjecive' | 'verb' | 'adverb' | string;
 
-export type Phonetics = {
-	text: string;
-	audio: string;
-}[];
-
-export type Origin = string;
-
-export type PartOfSpeech = string;
-
-export type Definition = {
-	definition: string;
-	example: string;
-	synonyms: string[];
-	antonyms: string[];
+export type Result = {
+	definition?: string;
+	partOfSpeech?: PartOfSpeech;
+	synonyms?: string[];
+	antonyms?: string[];
+	examples?: string[];
+	typeOf?: string[];
+	hasType?: string[];
+	partOf?: string[];
+	hasParts?: string[];
+	instanceOf?: string[];
+	hasInstance?: string[];
+	similiarTo?: string[];
+	also?: string[];
+	entails?: string[];
+	memberOf?: string[];
+	hasMember?: string[];
+	substanceOf?: string[];
+	hasSubstance?: string[];
+	inCategory?: string[];
+	hasCategories?: string[];
+	usageOf?: string[];
+	hasUsage?: string[];
+	hasTypes?: string[];
+	hasCategory?: string[];
+	hasInstances?: string[];
 };
 
-export type Meaning = {
-	partOfSpeech: PartOfSpeech;
-	definitions: Definition[];
+export type Syllables = {
+	count: number;
+	list: string[];
 };
+
+export type PronounciationAll = {
+	all: string;
+};
+
+export type PronounciationSpecific = Record<PartOfSpeech, string>;
+
+export type Pronounciations = PronounciationAll | PronounciationSpecific;
 
 export type WordData = {
 	word: Word;
-	phonetic: Phonetic;
-	phonetics: Phonetics;
-	origin: Origin;
-	meanings: Meaning[];
+	results: Result[];
+	syllables?: Syllables;
+	pronounciations?: Pronounciations;
 };

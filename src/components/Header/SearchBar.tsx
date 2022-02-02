@@ -22,6 +22,7 @@ const Search = styled('div')(({ theme }) => ({
 
 const SearchBar = (): JSX.Element => {
 	const history = useHistory();
+	console.log({ history, useHistory });
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const keyPressHandler: KeyboardEventHandler<HTMLDivElement> = ({ code }) => {
@@ -37,7 +38,10 @@ const SearchBar = (): JSX.Element => {
 	};
 
 	const searchHandler = (query: string) => {
-		if (query?.length) history.push(`/dictionary/${query}`);
+		if (query?.length)
+			history
+				? history.push(`/dictionary/${query}`)
+				: (window.location.href = `/dictionary/${query}`);
 	};
 
 	return (
@@ -51,7 +55,7 @@ const SearchBar = (): JSX.Element => {
 					className: 'search-bar__input',
 					placeholder: 'What would you liked defined?',
 					onKeyPress: keyPressHandler,
-					sx: { width: '100%', },
+					sx: { width: '100%' },
 				}}
 			/>
 		</Search>

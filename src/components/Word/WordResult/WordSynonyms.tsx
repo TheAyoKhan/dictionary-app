@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@mui/system/styled';
-import SectionTitle from '../../../SectionTitle';
+import Typography from '@mui/material/Typography';
 
 type WordSynonymProps = {
 	synonyms: string[];
@@ -17,8 +17,8 @@ const StyledWordSynonym = styled('div')({
 
 		'&:hover': {
 			textDecoration: 'underline',
-		}
-	}
+		},
+	},
 });
 
 const WordSynonym = ({ synonyms }: WordSynonymProps): JSX.Element => {
@@ -33,7 +33,9 @@ const WordSynonym = ({ synonyms }: WordSynonymProps): JSX.Element => {
 
 	return (
 		<StyledWordSynonym className="word__synonyms">
-			<SectionTitle className="synonyms-title">Synonyms</SectionTitle>
+			<Typography variant="h6" className="synonyms-title">
+				Synonyms
+			</Typography>
 			{synonymEls}
 		</StyledWordSynonym>
 	);
