@@ -8,6 +8,5 @@ export const getWordData = async <T>(
 	requester: Requester<T>
 ): Promise<T | null> => {
 	const response = await requester(`${apiEndpoint}/${word}`, options);
-	console.dir(response);
 	return response || null;
 };

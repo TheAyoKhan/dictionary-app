@@ -1,19 +1,23 @@
 # What is this?
 
-This is a Dictionary Project I've created using React + Typescript.
+This is a Dictionary Project I've created using React + Typescript. I wanted to test my proficiency in the two, and to use the Clean Architecture methodology in the creation.
+
+# Where is this hosted?
+
+This is hosted on ["Vercel"](https://vercel.com) ["here"](https://dictionary-app-theayokhan.vercel.app).
 
 # Where are you getting the dictionary entries?
 
-The dictionary entries are coming from ["Free Dictionary API"](https://dictionaryapi.dev/) created by [meetDeveloper](https://github.com/meetDeveloper/freeDictionaryAPI)
+The dictionary entries are coming from ["WordsAPI"](https://www.wordsapi.com).
 
-## Main Scripts
+# Main Scripts
 
-### `yarn start`
+## `yarn start`
 
 Run the app in development mode.\
 Hosted at [http://localhost:3000](http://localhost:3000).
 
-### `yarn build`
+## `yarn build`
 
 Builds the app for production to the `build` folder.
 
@@ -29,4 +33,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Final Note
 
-Despite the MIT License (see above) stating that you are allowed to distribute the Software without restriction, I would prefer that you not claim that you made this.
+Despite the MIT License (see above) stating that you are allowed to distribute the Software without restriction, I would prefer that you not take it and claim it as yours.

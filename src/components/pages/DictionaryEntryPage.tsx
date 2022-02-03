@@ -45,7 +45,6 @@ const DictionaryEntryPage = (): JSX.Element => {
 
 	return (
 		<StyledWordPage className="Word-Page">
-			{console.log(wordData)}
 			{wordData ? (
 				<Word
 					{...{

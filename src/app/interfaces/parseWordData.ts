@@ -1,3 +1,5 @@
+const { REACT_APP_WORDS_API_KEY } = process.env;
+
 import { getWordData, Requester } from '../application/getWordData';
 import { WordData } from '../domain/wordData';
 import axios, { AxiosResponse } from 'axios';
@@ -7,7 +9,7 @@ export const parseWordData = async (
 ): Promise<WordData | undefined> => {
 	const options = {
 		headers: {
-			'X-RapidAPI-Key': process.env.WORDS_API_KEY,
+			'X-RapidAPI-Key': REACT_APP_WORDS_API_KEY,
 		},
 	};
 
