@@ -4,7 +4,7 @@ This is a Dictionary Project I've created using Preact + Typescript. I wanted to
 
 # Where is this hosted?
 
-This is hosted on ["Vercel"](https://vercel.com) ["here"](https://dictionary-app-theayokhan.vercel.app).
+This is hosted on [Vercel](https://vercel.com) [here](https://dictionary-app-theayokhan.vercel.app).
 
 # Where are you getting the dictionary entries?
 
