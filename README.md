@@ -1,6 +1,6 @@
 # What is this?
 
-This is a Dictionary Project I've created using React + Typescript. I wanted to test my proficiency in the two, and to use the Clean Architecture methodology in the creation.
+This is a Dictionary Project I've created using Preact + Typescript. I wanted to test my proficiency in the React and Typescript, and to use the Clean Architecture methodology at the same time.
 
 # Where is this hosted?
 
@@ -14,7 +14,7 @@ The dictionary entries are coming from ["WordsAPI"](https://www.wordsapi.com).
 
 ## `yarn start`
 
-Run the app in development mode.\
+Run the app in development mode.
 Hosted at [http://localhost:3000](http://localhost:3000).
 
 ## `yarn build`
