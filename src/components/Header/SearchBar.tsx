@@ -27,7 +27,7 @@ const SearchBar = (): JSX.Element => {
 
 	const keyPressHandler: KeyboardEventHandler<HTMLDivElement> = ({ code }) => {
 		// "as HTMLInputElement" is used to make TypeSript think the object type is an HTMLInputElement
-		// or else ti wil think it doesn't have a "value" property
+		// or else it wil think it doesn't have a "value" property
 		const { value } = inputRef.current ?? ({} as HTMLInputElement);
 		if (code === 'Enter' || code === 'NumpadEnter') searchHandler(value ?? '');
 	};
@@ -38,10 +38,7 @@ const SearchBar = (): JSX.Element => {
 	};
 
 	const searchHandler = (query: string) => {
-		if (query?.length)
-			history
-				? history.push(`/dictionary/${query}`)
-				: (window.location.href = `/dictionary/${query}`);
+		if (query?.length) history.push(`/dictionary/${query}`);
 	};
 
 	return (

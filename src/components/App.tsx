@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React, { useContext, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import styled from '@mui/material/styles/styled';
@@ -46,10 +45,10 @@ const App = (): JSX.Element => {
 	}, [setDarkModeEnabled]);
 
 	return (
-		<StyledApp className={clsx('App', darkModeEnabled && 'dm')}>
-			<Header />
-			<div id="page-content">
-				<Router>
+		<Router>
+			<StyledApp id="App" className={darkModeEnabled ? 'dm' : ''}>
+				<Header />
+				<div id="page-content">
 					<Switch>
 						<Route {...{ path: '/', component: HomePage, exact: true }} />
 						<Route
@@ -68,9 +67,9 @@ const App = (): JSX.Element => {
 						/>
 						<Route component={ErrorPage} />
 					</Switch>
-				</Router>
-			</div>
-		</StyledApp>
+				</div>
+			</StyledApp>
+		</Router>
 	);
 };
 
