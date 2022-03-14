@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, useRouteMatch } from 'react-router-dom';
+import PageTemplate from './PageTemplate';
 import { parseWordData } from '../../app/interfaces/parseWordData';
 import Loading from '../Loading';
 import styled from '@mui/system/styled';
@@ -9,7 +10,6 @@ import Word from '../Word';
 const StyledWordPage = styled('div')(({ theme }) => ({
 	padding: theme.spacing(1),
 	display: 'grid',
-	flexDirection: 'column',
 	placeItems: 'center',
 
 	'.word': {
@@ -44,21 +44,23 @@ const DictionaryEntryPage = (): JSX.Element => {
 	}, [requestedWord]);
 
 	return (
-		<StyledWordPage className="Word-Page">
-			{wordData ? (
-				<Word
-					{...{
-						word: wordData?.word,
-						results: wordData?.results,
-						pronounciations: wordData?.pronounciations,
-					}}
-				/>
-			) : wordData === null ? (
-				<Redirect to="/no-entry-found" />
-			) : (
-				<Loading />
-			)}
-		</StyledWordPage>
+		<PageTemplate>
+			<StyledWordPage className="Word-Page">
+				{wordData ? (
+					<Word
+						{...{
+							word: wordData?.word,
+							results: wordData?.results,
+							pronounciations: wordData?.pronounciations,
+						}}
+					/>
+				) : wordData === null ? (
+					<Redirect to="/no-entry-found" />
+				) : (
+					<Loading />
+				)}
+			</StyledWordPage>
+		</PageTemplate>
 	);
 };
 
