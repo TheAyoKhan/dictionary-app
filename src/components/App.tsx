@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
+import { useEffect, useContext } from 'preact/hooks';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import styled from '@mui/material/styles/styled';
 import { DarkModeContext } from '../context/DarkModeContext';
-import Header from './Header';
 import DictionaryEntryPage from './pages/DictionaryEntryPage';
 import ErrorPage from './pages/ErrorPage';
 import SettingsPage from './pages/SettingsPage';
@@ -15,6 +15,7 @@ const StyledApp = styled('div')`
 	// Reset
 	* {
 		margin: 0;
+		padding: 0;
 		font-weight: normal;
 	}
 
@@ -22,10 +23,6 @@ const StyledApp = styled('div')`
 		background-color: #222,
 		color: #fff,
 	},
-
-	#page-content {
-		margin: 0 auto;
-	}
 `;
 
 const App = (): JSX.Element => {
@@ -47,27 +44,22 @@ const App = (): JSX.Element => {
 	return (
 		<Router>
 			<StyledApp id="App" className={darkModeEnabled ? 'dm' : ''}>
-				<Header />
-				<div id="page-content">
-					<Switch>
-						<Route {...{ path: '/', component: HomePage, exact: true }} />
-						<Route
-							{...{ path: '/dictionary', component: DictionaryEntryPage }}
-						/>
-						<Route
-							{...{
-								path: '/settings',
-								component: SettingsPage,
-							}}></Route>
-						<Route
-							{...{
-								path: '/no-entry-found',
-								component: NoEntryFoundPage,
-							}}
-						/>
-						<Route component={ErrorPage} />
-					</Switch>
-				</div>
+				<Switch>
+					<Route {...{ path: '/', component: HomePage, exact: true }} />
+					<Route {...{ path: '/dictionary', component: DictionaryEntryPage }} />
+					<Route
+						{...{
+							path: '/settings',
+							component: SettingsPage,
+						}}></Route>
+					<Route
+						{...{
+							path: '/no-entry-found',
+							component: NoEntryFoundPage,
+						}}
+					/>
+					<Route component={ErrorPage} />
+				</Switch>
 			</StyledApp>
 		</Router>
 	);

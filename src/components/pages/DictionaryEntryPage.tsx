@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'preact/hooks';
 import { Redirect, useRouteMatch } from 'react-router-dom';
 import PageTemplate from './PageTemplate';
 import { parseWordData } from '../../app/interfaces/parseWordData';
@@ -7,7 +8,7 @@ import styled from '@mui/system/styled';
 import { WordData } from '../../app/domain/wordData';
 import Word from '../Word';
 
-const StyledWordPage = styled('div')(({ theme }) => ({
+const StyledDictionaryEntryPage = styled('div')(({ theme }) => ({
 	padding: theme.spacing(1),
 	display: 'grid',
 	placeItems: 'center',
@@ -45,7 +46,7 @@ const DictionaryEntryPage = (): JSX.Element => {
 
 	return (
 		<PageTemplate>
-			<StyledWordPage className="Word-Page">
+			<StyledDictionaryEntryPage id="Dictionary-Entry-Page">
 				{wordData ? (
 					<Word
 						{...{
@@ -59,7 +60,7 @@ const DictionaryEntryPage = (): JSX.Element => {
 				) : (
 					<Loading />
 				)}
-			</StyledWordPage>
+			</StyledDictionaryEntryPage>
 		</PageTemplate>
 	);
 };

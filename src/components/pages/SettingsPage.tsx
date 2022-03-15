@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useContext } from 'preact/hooks';
 import styled from '@mui/system/styled';
-import Toggle from '../Toggle';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import Toggle from '../Toggle';
 import PageTemplate from './PageTemplate';
@@ -8,8 +8,6 @@ import PageTemplate from './PageTemplate';
 const StyledSettingsPage = styled('div')({
 	display: 'grid',
 	placeItems: 'center',
-	height: '100%',
-	padding: theme.spacing(1),
 
 	'.settings__list': {
 		width: '80%',
@@ -37,6 +35,7 @@ const SettingsPage = (): JSX.Element => {
 					</div>
 				</div>
 			</StyledSettingsPage>
+		</PageTemplate>
 	);
 };
 

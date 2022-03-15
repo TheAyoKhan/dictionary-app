@@ -29,6 +29,7 @@ const Toggle = ({
 }: ToggleProps): JSX.Element => {
 	const nameDashed = name.toLowerCase().split(' ').join('-');
 
+	// TODO: Make toggleFunction less dependant on React types
 	const toggleFunction: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
 		const { checked: inputChecked } = target;
 		stateUpdateFunction(inputChecked);

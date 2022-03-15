@@ -33,7 +33,7 @@ const WordAntonym = ({ antonyms }: WordAntonymProps): JSX.Element => {
 
 	return (
 		<StyledWordAntonym className="word__antonym">
-			<Typography variant="h2" className="antonyms-title">
+			<Typography variant="h6" className="antonyms-title">
 				Antonyms
 			</Typography>
 			{antonymEls}

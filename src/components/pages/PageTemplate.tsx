@@ -1,14 +1,5 @@
 import React from 'react';
-import styled from '@mui/system/styled';
 import Header from '../Header';
-
-const StyledPageTemplate = styled('div')(({ theme }) => ({
-	display: 'grid',
-	flexdirection: 'column',
-	placeitems: 'center',
-	height: '100%',
-	padding: theme.spacing(1),
-}));
 
 type PageTemplateProps = {
 	children: React.ReactElement;
@@ -16,10 +7,10 @@ type PageTemplateProps = {
 
 const PageTemplate = ({ children }: PageTemplateProps): React.ReactElement => {
 	return (
-		<>
+		<div>
 			<Header />
-			<StyledPageTemplate>{children}</StyledPageTemplate>
-		</>
+			<div id="page-content">{children}</div>
+		</div>
 	);
 };
 

@@ -1,4 +1,5 @@
-import React, { KeyboardEventHandler, MouseEventHandler, useRef } from 'react';
+import React, { KeyboardEventHandler, MouseEventHandler } from 'react';
+import { useRef } from 'preact/hooks';
 import { useHistory } from 'react-router-dom';
 import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -22,7 +23,6 @@ const Search = styled('div')(({ theme }) => ({
 
 const SearchBar = (): JSX.Element => {
 	const history = useHistory();
-	console.log({ history, useHistory });
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const keyPressHandler: KeyboardEventHandler<HTMLDivElement> = ({ code }) => {

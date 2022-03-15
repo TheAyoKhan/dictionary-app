@@ -1,25 +1,23 @@
-import React, {
-	createContext,
-	Dispatch,
-	ReactNode,
-	SetStateAction,
-	useState,
-} from 'react';
+import React, { ReactNode } from 'react';
+import { createContext } from 'preact';
+import { useState, StateUpdater } from 'preact/hooks';
 
 type DarkModeContextType = {
 	darkModeEnabled: boolean;
-	setDarkModeEnabled: Dispatch<SetStateAction<boolean>>;
+	setDarkModeEnabled: StateUpdater<boolean>;
 };
 
 export const DarkModeContext = createContext<DarkModeContextType>(
 	{} as DarkModeContextType
 );
 
+type DarkModeContextProviderProps = {
+	children: ReactNode;
+};
+
 export const DarkModeContextProvider = ({
 	children,
-}: {
-	children: ReactNode;
-}): JSX.Element => {
+}: DarkModeContextProviderProps): JSX.Element => {
 	const [darkModeEnabled, setDarkModeEnabled] = useState(true);
 
 	return (
