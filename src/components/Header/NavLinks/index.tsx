@@ -13,7 +13,11 @@ const StyledNav = styled('nav')(({ theme }) => ({
 	alignItems: 'center',
 }));
 
-const NavLinks = ({ pages }: { pages: Pages }): JSX.Element => {
+type NavLinksProps = {
+	pages: Pages;
+};
+
+const NavLinks = ({ pages }: NavLinksProps): JSX.Element => {
 	return (
 		<StyledNav id="nav-links">
 			{pages.map((page) => (

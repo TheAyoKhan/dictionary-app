@@ -7,7 +7,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Pages } from '../../../types/pages';
 import NavMenuItem from './NavMenuItem';
 
-const NavMenu = ({ pages }: { pages: Pages }): JSX.Element => {
+type NavMenuProps = {
+	pages: Pages;
+};
+
+const NavMenu = ({ pages }: NavMenuProps): JSX.Element => {
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
 	const handleToggleNavMenu: MouseEventHandler<HTMLElement> = ({
