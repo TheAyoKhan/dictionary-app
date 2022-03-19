@@ -1,5 +1,14 @@
+import styled from '@mui/material/styles/styled';
 import React from 'react';
 import Header from '../Header';
+
+const StyledPageTemplate = styled('div')({
+	minHeight: '100vh',
+
+	'> div': {
+		minHeight: '100vh',
+	},
+});
 
 type PageTemplateProps = {
 	children: React.ReactElement;
@@ -7,10 +16,10 @@ type PageTemplateProps = {
 
 const PageTemplate = ({ children }: PageTemplateProps): React.ReactElement => {
 	return (
-		<div>
+		<StyledPageTemplate>
 			<Header />
-			<div id="page-content">{children}</div>
-		</div>
+			{children}
+		</StyledPageTemplate>
 	);
 };
 

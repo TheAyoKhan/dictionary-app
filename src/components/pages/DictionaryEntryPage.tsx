@@ -4,7 +4,7 @@ import { Redirect, useRouteMatch } from 'react-router-dom';
 import PageTemplate from './PageTemplate';
 import { parseWordData } from '../../app/interfaces/parseWordData';
 import Loading from '../Loading';
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
 import { WordData } from '../../app/domain/wordData';
 import Word from '../Word';
 

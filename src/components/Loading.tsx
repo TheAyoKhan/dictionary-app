@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
 import { ReactComponent as LoadingIconSvg } from '../images/loading-icon.svg';
 
 const StyledLoadingIcon = styled(LoadingIconSvg)({

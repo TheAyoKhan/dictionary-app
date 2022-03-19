@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
 import WordAntonyms from './WordAntonyms';
 import WordSynonyms from './WordSynonyms';
 import Typography from '@mui/material/Typography';

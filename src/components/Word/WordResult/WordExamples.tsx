@@ -1,12 +1,9 @@
 import React from 'react';
-import styled from '@mui/system/styled';
 import Typography from '@mui/material/Typography';
 
 type WordExamplesProps = {
 	examples: string[];
 };
-
-const StyledWordExamples = styled('div')``;
 
 const WordExamples = ({ examples }: WordExamplesProps): JSX.Element => {
 	const exampleEls = examples.map((example, i) => (
@@ -14,12 +11,12 @@ const WordExamples = ({ examples }: WordExamplesProps): JSX.Element => {
 	));
 
 	return (
-		<StyledWordExamples className="word__antonym">
+		<div className="word__antonym">
 			<Typography variant="h6" className="examples-title">
 				Examples
 			</Typography>
 			{exampleEls}
-		</StyledWordExamples>
+		</div>
 	);
 };
 

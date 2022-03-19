@@ -1,6 +1,9 @@
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
+import Switch from '@mui/material/Switch';
+import { useMemo } from 'preact/hooks';
 import React, { ChangeEventHandler } from 'react';
 import toCamelCase from '../utils/toCamelCase';
+import toDashed from '../utils/toDashed';
 
 type ToggleProps = {
 	name: string;
@@ -10,32 +13,26 @@ type ToggleProps = {
 	stateUpdateFunction: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const StyledToggle = styled('div')`
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-
-	font-size: 1.5rem;
-
-	input {
-		transform: scale(1.5);
-	}
-`;
+const StyledToggle = styled('div')({
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'space-around',
+});
 
 const Toggle = ({
 	name,
 	checked,
 	stateUpdateFunction,
 }: ToggleProps): JSX.Element => {
-	const nameDashed = name.toLowerCase().split(' ').join('-');
+	const nameDashed = useMemo(() => toDashed(name), [name]);
+	const nameCamelCase = useMemo(() => toCamelCase(name), [name]);
 
 	// TODO: Make toggleFunction less dependant on React types
 	const toggleFunction: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
 		const { checked: inputChecked } = target;
 		stateUpdateFunction(inputChecked);
 
-		const nameToCamelCase = toCamelCase(name);
-		document.cookie = `${nameToCamelCase}=${inputChecked}; SameSite=Strict;`;
+		document.cookie = `${nameCamelCase}=${inputChecked}; SameSite=Strict;`;
 
 		console.log({ state: inputChecked, cookies: document.cookie });
 	};
@@ -53,7 +50,7 @@ const Toggle = ({
 				}}>
 				{name}
 			</label>
-			<input
+			{/* <input
 				{...{
 					id: `toggle-${nameDashed}`,
 					className: 'toggle__input',
@@ -61,6 +58,16 @@ const Toggle = ({
 					type: 'checkbox',
 					checked,
 					onChange: toggleFunction,
+				}}
+			/> */}
+			<Switch
+				{...{
+					id: `toggle-${nameDashed}`,
+					className: 'toggle__input',
+					name,
+					checked,
+					onChange: toggleFunction,
+					color: 'secondary',
 				}}
 			/>
 		</StyledToggle>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'preact/hooks';
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import Toggle from '../Toggle';
 import PageTemplate from './PageTemplate';

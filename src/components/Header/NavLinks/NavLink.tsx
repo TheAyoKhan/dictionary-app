@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
 import { Page } from '../../../types/pages';
 
 const StyledNavLink = styled(Link)({

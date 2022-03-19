@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from '@mui/system/styled';
+import styled from '@mui/material/styles/styled';
 import Typography from '@mui/material/Typography';
 
 type WordAntonymProps = {
